@@ -137,7 +137,6 @@ bar {
 }
 for_window [class="^.*"] border pixel 0
 # Inner gaps for all windows: space between two adjacent windows (or split containers).
-gaps inner 10
 
 # Outer gaps for all windows: space along the screen edges.
 # gaps outer|horizontal|vertical|top|left|bottom|right <gap_size>[px]
