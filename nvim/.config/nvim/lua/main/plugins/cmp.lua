@@ -5,27 +5,17 @@ return {
     dependencies = {
         "hrsh7th/cmp-buffer", -- source for text in buffer
         "hrsh7th/cmp-path", -- source for file system paths
-        {
-            "L3MON4D3/LuaSnip",
-            version = "v2.*",
-            -- install jsregexp (optional!).
-            build = "make install_jsregexp",
-        },
         "rafamadriz/friendly-snippets",
         "onsails/lspkind.nvim", -- vs-code like pictograms
     },
     config = function()
         local cmp = require("cmp")
         local lspkind = require("lspkind")
-        local luasnip = require("luasnip")
 
-        require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
             snippet = {
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end,
+
             },
             mapping = cmp.mapping.preset.insert({
                 -- trigger completion menu
@@ -42,7 +32,6 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip" },
                 { name = "buffer" },
                 { name = "path" },
             }),
