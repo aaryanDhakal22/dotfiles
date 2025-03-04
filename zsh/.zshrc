@@ -78,8 +78,6 @@ alias python='python3'
 alias s2s="ssh aaryan@home-server"
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
 
 . "$HOME/.local/bin/env"
 
