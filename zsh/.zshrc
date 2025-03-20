@@ -83,5 +83,6 @@ alias python='python3'
 alias s2s="ssh aaryan@home-server"
 
 # Shell integrations
-eval "$(fzf)"
 eval "$(zoxide init --cmd cd zsh)"
+
+. "$HOME/.local/bin/env"
