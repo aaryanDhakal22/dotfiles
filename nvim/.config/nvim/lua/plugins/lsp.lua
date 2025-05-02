@@ -47,12 +47,18 @@ return {
 			})
 			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "gopls", "pyright", "lua_ls" },
+				ensure_installed = { "ts_ls", "biome", "gopls", "pyright", "lua_ls" },
 				handlers = {
 					-- this first function is the "default handler"
 					-- it applies to every language server without a "custom handler"
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
+					end,
+					["biome"] = function()
+						require("lspconfig").biome.setup({
+							capabilities = lsp_capabilities,
+							settings = {},
+						})
 					end,
 					["gopls"] = function()
 						require("lspconfig").gopls.setup({
