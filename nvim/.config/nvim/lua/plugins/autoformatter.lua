@@ -6,18 +6,21 @@ return {
 
 		conform.setup({
 			formatters_by_ft = {
+				-- Web/Svelte
 				javascript = { "prettier" },
 				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-				css = { "prettier" },
+				svelte = { "prettier" },
 				html = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
 				markdown = { "prettier" },
+				-- Go
+				go = { "gofumpt", "goimports" },
+				-- Others
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				go = { "gofumpt", "goimports" },
 				c = { "astyle" },
 				cpp = { "astyle" },
 			},
