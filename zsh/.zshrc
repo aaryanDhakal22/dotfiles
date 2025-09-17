@@ -32,8 +32,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
+#zinit snippet OMZL::git.zsh
+#zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
@@ -82,7 +82,9 @@ alias c='clear'
 alias python='python3'
 alias s2s="ssh aaryan@home-server"
 
+export EDITOR='nvim'
+export PATH="$HOME/go/bin:$PATH"
 # Shell integrations
-eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init --cmd cd zsh)"
 
 . "$HOME/.local/bin/env"

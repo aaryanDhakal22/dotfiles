@@ -10,10 +10,9 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             { "hrsh7th/cmp-nvim-lsp" },
-            { "hrsh7th/cmp-buffer" },             -- Buffer completions
-            { "hrsh7th/cmp-path" },               -- Path completions
-            { "saadparwaiz1/cmp_luasnip" },       -- Snippet completions
-            { "supermaven-inc/supermaven-nvim" }, -- AI completions
+            { "hrsh7th/cmp-buffer" },       -- Buffer completions
+            { "hrsh7th/cmp-path" },         -- Path completions
+            { "saadparwaiz1/cmp_luasnip" }, -- Snippet completions
             { "williamboman/mason.nvim" },
             { "williamboman/mason-lspconfig.nvim" },
             { "hrsh7th/nvim-cmp" },
@@ -33,6 +32,7 @@ return {
             -- Load friendly snippets
             require('luasnip.loaders.from_vscode').lazy_load()
 
+
             -- Setup Super Maven
             require("supermaven-nvim").setup({
                 keymaps = {
@@ -40,7 +40,7 @@ return {
                     clear_suggestion = "<C-]>",
                     accept_word = "<C-j>",
                 },
-                ignore_filetypes = { "cpp" }, -- or { "cpp", "lua" } to ignore specific filetypes
+                ignore_filetypes = {},
                 color = {
                     suggestion_color = "#ffffff",
                     cterm = 244,
@@ -49,6 +49,7 @@ return {
                 disable_inline_completion = false, -- disables inline completion for use with cmp
                 disable_keymaps = false            -- disables built in keymaps for more manual control
             })
+
 
             cmp.setup({
                 snippet = {
@@ -94,14 +95,6 @@ return {
                     ['<C-n>'] = cmp.mapping.select_next_item(),
                     ['<C-p>'] = cmp.mapping.select_prev_item(),
 
-                    -- Snippet navigation only (no completion cycling)
-                    ['<Tab>'] = cmp.mapping(function(fallback)
-                        if luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        else
-                            fallback() -- Let Super Maven handle Tab
-                        end
-                    end, { 'i', 's' }),
 
                     ['<S-Tab>'] = cmp.mapping(function(fallback)
                         if luasnip.jumpable(-1) then
@@ -157,7 +150,7 @@ return {
             local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls", "biome", "gopls", "pyright", "lua_ls","svelte","tailwindcss","emmet_ls","html","cssls","jsonls"},
+                ensure_installed = { "ts_ls", "biome", "gopls", "pyright", "lua_ls", "svelte", "tailwindcss", "emmet_ls", "html", "cssls", "jsonls" },
                 handlers = {
                     -- Default handler
                     function(server_name)
